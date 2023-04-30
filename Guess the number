@@ -1,0 +1,49 @@
+import time
+import random 
+upperlimit = 10
+level = 1
+attempt = 10
+a = random.randint(1,upperlimit)
+i = 1
+l = [a-3,a-2,a-1,a+1,a+2,a+3]
+while (i<=attempt):
+    time.sleep(1)
+    guess = int(input("Enter your guess:"))
+    if guess!=a:
+        if guess in l:
+            if guess>a:
+                print(f'''ohh pretty close! Try a smaller number!
+You have {attempt-i} attempts left''')
+                i = i+1
+            else:
+                print(f'''ohh pretty close! Try a larger number!
+You have {attempt-i} attempts left''')
+                i = i+1
+        else:     
+            if guess>a:
+                print(f'''Too Large. Try Again!
+You have {attempt-i} attempts left''')
+                i = i+1
+            else:
+                print(f'''Too small. Try Again!
+You have {attempt-i} attempts left''')
+                i = i+1
+    else:
+        print('''Correct Guess. YOU WON!
+Lets's move on to the next level.''')
+        level = level+1
+        if attempt==1:
+            attmept = attempt
+        else:
+            attempt = attempt-1
+        upperlimit +=5
+        a = random.randint(1, upperlimit)
+        i = 1
+        time.sleep(1)
+        print(f"You have reached level: {level}")
+        time.sleep(0.3)
+        print(f"The range of numbes is 1 to {upperlimit}")
+        time.sleep(0.3)
+        print(f'You have {attempt} attempts for this level')
+if (i>attempt):
+    print("You failed.")
